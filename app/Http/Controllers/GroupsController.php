@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Group;
 use App\Contact;
 
-class ContactsController extends Controller
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +16,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        return view('layouts.contact'); 
-    }
-    public function opensend()
-    {
-        return view('layouts.send'); 
+        return view('layouts.group'); 
     }
 
     /**
@@ -30,7 +28,17 @@ class ContactsController extends Controller
     {
         //
     }
+    public function getUsers(){
+        $data = DB::table('contacts')->get();
+        // dd($groupsdata);
+        return response()->json($data);
+    }
 
+    public function getgroups(){
+        $groupsdata = DB::table('groups')->get();
+        return response()->json($groupsdata);
+    }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -39,23 +47,8 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $contact = Contact::create($request->all());
-        return response()->json(['result'=>$contact]);
-        
-    }
-     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function Substore(Request $request)
-    {
-        // $contact_id= Contact::findOrFail($request->get('contact_id'));
-        // $group_id= Group::findOrFail($request->get('group_id'));
-        // $contact->groups()->attach($group_id);
-
+        $group = Group::create($request->all());
+        return response()->json(['result'=>$group]);
     }
 
     /**
@@ -66,7 +59,7 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-     //
+        //
     }
 
     /**
