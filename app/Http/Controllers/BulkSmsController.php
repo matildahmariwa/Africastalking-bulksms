@@ -23,55 +23,53 @@ class BulkSmsController extends Controller
     public function sendSms(Request $request)
     {
        
-// $username   = "sandbox";
-// $apiKey     = "22f5cb7036842f374fd13fbf2231dce7af5fb0e281d5440488db9d2966f414b1";
+$username   = "sandbox";
+$apiKey     = "22f5cb7036842f374fd13fbf2231dce7af5fb0e281d5440488db9d2966f414b1";
 
 // Initialize the SDK
-// $AT         = new AfricasTalking($username, $apiKey);
+$AT         = new AfricasTalking($username, $apiKey);
 
 // Get the SMS service
-// $sms        = $AT->sms();
+$sms        = $AT->sms();
 
 // Set the numbers you want to send to in international format
       
-
-    // $recipients = Contact::select('phone_number')->get();
-    // dd($request);
-    //     $recipients = Contact::whereHas('groups', function($q) {
-    //     $q->where('group_name', '=', $request->input('group_name'));
-    // })->get();
-    $contacts = Contact::whereHas('groups', function($q) {
-        $q->where('group_name', '=', $request->input('group_name'));
-    })->get();
-    // $recipients = Group::all();
-    
-    // $recipient = Group::find(1);
-
-    return $request;
-    
-
-
 // Set your message
-// $message    = "hey";
-// $recipients = "0728127290,0797295632";
+$message    = $request->input('message');
+// $message    = 'hey mati';
+// return $message;
+    
+    $recipients = Contact::whereHas('groups',function($q) use(&$request){
+        $q->where('group_name', '=', $request->input('group_name'));
+    })->pluck('phone_number');
+  
+    
+    // return $recipients;
+    
+
+
+
+// $recipients = "+254797295632";
 
 // Set your shortCode or senderId
 // $from       = "";
+foreach($recipients as $recipient) {
+try {
+    // Thats it, hit send and we'll take care of the rest
 
-// try {
-//     // Thats it, hit send and we'll take care of the rest
-//     $result = $sms->send([
-//         'to'      => $recipients,
-//         'message' => $message,
-//         // 'from'    => $from
-//     ]);
+    $result = $sms->send([
+        'to'      => $recipient,
+        'message' => $message,
+        // 'from'    => $from
+    ]);
 
-//     dd($result);
-// } catch (Exception $e) {
-//     echo "Error: ".$e->getMessage();
-// }
+    // dd($result);
+// exit();
+} catch (Exception $e) {
+    echo "Error: ".$e->getMessage();
+}
     }
-    
+}   
 
     /**
      * Show the form for creating a new resource.

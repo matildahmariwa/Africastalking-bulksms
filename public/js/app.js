@@ -2093,11 +2093,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      group: 0,
-      groups: []
+      group: "",
+      groups: [],
+      message: ''
     };
   },
   mounted: function mounted() {
@@ -2106,10 +2109,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sendsms: function sendsms() {
-      axios.post('/api/sms', {
-        group_name: 'Farmers',
+      axios.post("/api/sms", {
+        group_name: this.group,
+        message: this.message,
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       }).then(function (response) {
         console.log(response);
@@ -2118,14 +2122,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getGroups: function getGroups() {
-      axios.get('/api/getgroups').then(function (response) {
+      axios.get("/api/getgroups").then(function (response) {
         console.log(response);
         this.groups = response.data;
       }.bind(this));
     },
     createSub: function createSub(sub) {
-      this.$store.dispatch('createSub', this.sub);
-      this.sub = '';
+      this.$store.dispatch("createSub", this.sub);
+      this.sub = "";
     }
   }
 });
@@ -38090,30 +38094,24 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { name: "group_name", id: "group_name" },
             on: {
-              change: [
-                function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.group = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                },
-                function($event) {
-                  return _vm.getGroups()
-                }
-              ]
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.group = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
             }
           },
           [
-            _c("option", { attrs: { value: "0" } }, [_vm._v("Select Group")]),
+            _c("option", { attrs: { value: "" } }, [_vm._v("Select Group")]),
             _vm._v(" "),
             _vm._l(_vm.groups, function(data) {
               return _c(
@@ -38127,7 +38125,30 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", [
+        _c("label", [_vm._v("Enter Message description:")]),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.message,
+              expression: "message"
+            }
+          ],
+          attrs: { name: "", id: "", cols: "30", rows: "10" },
+          domProps: { value: _vm.message },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.message = $event.target.value
+            }
+          }
+        })
+      ])
     ]),
     _vm._v(" "),
     _c("button", { staticClass: "button", on: { click: _vm.sendsms } }, [
@@ -38135,18 +38156,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("label", [_vm._v("Enter Message description:")]),
-      _vm._v(" "),
-      _c("textarea", { attrs: { name: "", id: "", cols: "30", rows: "10" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
