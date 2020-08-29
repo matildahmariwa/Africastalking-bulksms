@@ -20,56 +20,95 @@ class BulkSmsController extends Controller
     {
         //
     }
-    public function sendSms(Request $request)
-    {
+//     public function sendSms(Request $request)
+//     {
        
-$username   = "sandbox";
-$apiKey     = "22f5cb7036842f374fd13fbf2231dce7af5fb0e281d5440488db9d2966f414b1";
+// $username   = "sandbox";
+// $apiKey     = "22f5cb7036842f374fd13fbf2231dce7af5fb0e281d5440488db9d2966f414b1";
 
-// Initialize the SDK
-$AT         = new AfricasTalking($username, $apiKey);
+// // Initialize the SDK
+// $AT         = new AfricasTalking($username, $apiKey);
 
-// Get the SMS service
-$sms        = $AT->sms();
+// // Get the SMS service
+// $sms        = $AT->sms();
 
-// Set the numbers you want to send to in international format
+// // Set the numbers you want to send to in international format
       
-// Set your message
-$message    = $request->input('message');
-// $message    = 'hey mati';
-// return $message;
+// // Set your message
+// $message    = $request->input('message');
+// // $message    = 'hey mati';
+// // return $message;
     
-    $recipients = Contact::whereHas('groups',function($q) use(&$request){
-        $q->where('group_name', '=', $request->input('group_name'));
-    })->pluck('phone_number');
+//     $recipients = Contact::whereHas('groups',function($q) use(&$request){
+//         $q->where('group_name', '=', $request->input('group_name'));
+//     })->pluck('phone_number');
   
     
-    // return $recipients;
+//     // return $recipients;
     
 
 
 
-// $recipients = "+254797295632";
+// // $recipients = "+254797295632";
 
-// Set your shortCode or senderId
-// $from       = "";
-foreach($recipients as $recipient) {
-try {
-    // Thats it, hit send and we'll take care of the rest
+// // Set your shortCode or senderId
+// // $from       = "";
+// foreach($recipients as $recipient) {
+// try {
+//     // Thats it, hit send and we'll take care of the rest
 
-    $result = $sms->send([
-        'to'      => $recipient,
-        'message' => $message,
-        // 'from'    => $from
-    ]);
+//     $result = $sms->send([
+//         'to'      => $recipient,
+//         'message' => $message,
+//         // 'from'    => $from
+//     ]);
 
-    // dd($result);
-// exit();
-} catch (Exception $e) {
-    echo "Error: ".$e->getMessage();
-}
+//     // dd($result);
+// // exit();
+// } catch (Exception $e) {
+//     echo "Error: ".$e->getMessage();
+// }
+//     }
+// }   
+public function getCredentials($message, $recipient)
+    {
+        try {
+            $username   = "sandbox";
+            $apiKey     = "22f5cb7036842f374fd13fbf2231dce7af5fb0e281d5440488db9d2966f414b1";
+
+            // Initialize the SDK
+            $AT         = new AfricasTalking($username, $apiKey);
+
+            // Get the SMS service
+            $sms        = $AT->sms();
+            $result = $sms->send(['to'  => $recipient,'message' => $message]);
+            print_r($result);
+        } catch (Exception $e) {
+            echo "Error: ".$e->getMessage();
+        }
+            
     }
-}   
+    public function sendSms(Request $request){
+            $recipients = Contact::whereHas('groups',function($q) use(&$request){
+
+                $q->where('group_name', '=', $request->input('group_name'));
+
+            })->get();
+
+            $message    = $request->input('message');
+
+            foreach($recipients as $recipient) {
+
+                $phone = $recipient->phone_number;
+
+                $result = $this->getCredentials($message,$phone);
+                  return ($result);
+                if(!$result){
+                    
+                }
+        }
+  
+    }
 
     /**
      * Show the form for creating a new resource.
