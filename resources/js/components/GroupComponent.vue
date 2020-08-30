@@ -1,17 +1,20 @@
 <template>
 <div>
-     <h3>Enter Group information</h3>
-<form>
-          <div>
-            
-    <input  v-model="group.group_name"  placeholder="Enter group name">
-    </div>
-    <div>
-   <textarea v-model="group.description" placeholder="enter description"></textarea>
-    </div>
     
+<form >
+     <h3>Enter Group information</h3>
+
+         <div class="form-group">
+
+      <label  class="grey-text">Enter group name</label>      
+    <input class='form-control'  v-model="group.group_name"  placeholder="Enter group name">
+    
+        <label  class="grey-text">Enter group description</label>
+   <textarea class='form-control' v-model="group.description" placeholder="enter description"></textarea>
+    
+         </div>
       </form>
-       <button v-on:click="createGroup">Add group</button>
+       <button class="btn btn-primary" v-on:click="createGroup">Add group</button>
 </div>
       </template>
  <script>

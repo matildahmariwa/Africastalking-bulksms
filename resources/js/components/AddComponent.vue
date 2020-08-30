@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Add contact to group</h1>
-        <form >
+        <form class='form-control' >
        <div>
           <label>Select Contact:</label>
                             <select class='form-control' v-model='sub.contact' @change='getContacts()'>

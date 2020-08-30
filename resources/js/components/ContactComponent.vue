@@ -1,24 +1,29 @@
 <template>
   <div>
-      <h3>Enter contact details</h3>
-      <form>
-          <div>
-    <input  type="text" v-model="contact.first_name" placeholder="Enter first name">
-    </div>
-    <div>
-    <input  type="text" v-model="contact.last_name" placeholder="Enter last name">
-    </div>
-    <div>
-    <input  type="text" v-model="contact.residence" placeholder="Enter county name">
-    </div>
-    <div>
-    <input  type="text" v-model="contact.phone_number" placeholder="Enter phone number">
-    <div>
-    <input  type="text" v-model="contact.id_number" placeholder="Enter id number">
-    </div>
-    </div>
+      
+      <form >
+           <div class="form-group">
+          <p class="h4 text-center mb-4">Create contact</p>
+
+         <label  class="grey-text">Enter first contact name</label>     
+    <input class='form-control'  type="text" v-model="contact.first_name" placeholder="Matildah">
+   
+      <label  class="grey-text">Enter contact last name</label>
+    <input class='form-control'  type="text" v-model="contact.last_name" placeholder="Njumwa">
+  
+   <label  class="grey-text">Enter county of residence</label> 
+    <input class='form-control' type="text" v-model="contact.residence" placeholder="Isiolo">
+ 
+   <label  class="grey-text">Enter phone number</label> 
+    <input class='form-control' type="text" v-model="contact.phone_number" placeholder="+25472814..">
+
+  <label for="defaultFormLoginEmailEx" class="grey-text">Enter ID number</label>
+
+    <input class='form-control'  type="text" v-model="contact.id_number" placeholder="33067836">
+ 
+           </div>
       </form>
-       <button v-on:click="createContact">Add contact</button>
+       <button class="btn btn-primary" v-on:click="createContact">Add contact</button>
   </div>
 </template>
 

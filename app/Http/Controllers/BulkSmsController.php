@@ -20,6 +20,17 @@ class BulkSmsController extends Controller
     {
         //
     }
+
+    public function CallbackAT(Request $Request){
+
+        
+        $callback = $Request->getContent();
+
+        file_put_contents('ATCallback.log',$callback,FILE_APPEND);
+
+        return Response()->json(['responseCode'=>200,'responseMessage'=>'Reached']);
+
+    }
 //     public function sendSms(Request $request)
 //     {
        
@@ -94,15 +105,20 @@ public function getCredentials($message, $recipient)
                 $q->where('group_name', '=', $request->input('group_name'));
 
             })->get();
+            // $recipient = array();
+            // array_push($recipient,$recipients->phone_number);
+
 
             $message    = $request->input('message');
 
             foreach($recipients as $recipient) {
-
+  
                 $phone = $recipient->phone_number;
 
                 $result = $this->getCredentials($message,$phone);
+                
                   return ($result);
+
                 if(!$result){
                     
                 }

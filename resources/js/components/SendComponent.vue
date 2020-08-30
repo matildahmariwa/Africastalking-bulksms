@@ -3,7 +3,7 @@
     <h4>Send Message to group</h4>
     <form>
       <div>
-        <label>Select Group:</label>
+        <label  class="grey-text">Select Group</label>  
         <select class="form-control" v-model="group">
           <option value>Select Group</option>
           <option
@@ -14,8 +14,8 @@
         </select>
       </div>
       <div>
-        <label>Enter Message description:</label>
-        <textarea name id cols="30" rows="10" v-model="message"></textarea>
+    <label  class="grey-text">Enter message</label>  
+        <textarea class="form-control" name id cols="30" rows="10" v-model="message"></textarea>
       </div>
     </form>
     <button v-on:click="sendsms" class="button">Send message</button>

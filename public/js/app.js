@@ -1999,6 +1999,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2025,6 +2030,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -37721,7 +37729,7 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("Add contact to group")]),
     _vm._v(" "),
-    _c("form", [
+    _c("form", { staticClass: "form-control" }, [
       _c("div", [
         _c("label", [_vm._v("Select Contact:")]),
         _vm._v(" "),
@@ -37855,10 +37863,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v("Enter contact details")]),
-    _vm._v(" "),
     _c("form", [
-      _c("div", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("p", { staticClass: "h4 text-center mb-4" }, [
+          _vm._v("Create contact")
+        ]),
+        _vm._v(" "),
+        _c("label", { staticClass: "grey-text" }, [
+          _vm._v("Enter first contact name")
+        ]),
+        _vm._v(" "),
         _c("input", {
           directives: [
             {
@@ -37868,7 +37882,8 @@ var render = function() {
               expression: "contact.first_name"
             }
           ],
-          attrs: { type: "text", placeholder: "Enter first name" },
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Matildah" },
           domProps: { value: _vm.contact.first_name },
           on: {
             input: function($event) {
@@ -37878,10 +37893,12 @@ var render = function() {
               _vm.$set(_vm.contact, "first_name", $event.target.value)
             }
           }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "grey-text" }, [
+          _vm._v("Enter contact last name")
+        ]),
+        _vm._v(" "),
         _c("input", {
           directives: [
             {
@@ -37891,7 +37908,8 @@ var render = function() {
               expression: "contact.last_name"
             }
           ],
-          attrs: { type: "text", placeholder: "Enter last name" },
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Njumwa" },
           domProps: { value: _vm.contact.last_name },
           on: {
             input: function($event) {
@@ -37901,10 +37919,12 @@ var render = function() {
               _vm.$set(_vm.contact, "last_name", $event.target.value)
             }
           }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "grey-text" }, [
+          _vm._v("Enter county of residence")
+        ]),
+        _vm._v(" "),
         _c("input", {
           directives: [
             {
@@ -37914,7 +37934,8 @@ var render = function() {
               expression: "contact.residence"
             }
           ],
-          attrs: { type: "text", placeholder: "Enter county name" },
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Isiolo" },
           domProps: { value: _vm.contact.residence },
           on: {
             input: function($event) {
@@ -37924,10 +37945,12 @@ var render = function() {
               _vm.$set(_vm.contact, "residence", $event.target.value)
             }
           }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "grey-text" }, [
+          _vm._v("Enter phone number")
+        ]),
+        _vm._v(" "),
         _c("input", {
           directives: [
             {
@@ -37937,7 +37960,8 @@ var render = function() {
               expression: "contact.phone_number"
             }
           ],
-          attrs: { type: "text", placeholder: "Enter phone number" },
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "+25472814.." },
           domProps: { value: _vm.contact.phone_number },
           on: {
             input: function($event) {
@@ -37949,32 +37973,44 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("div", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.contact.id_number,
-                expression: "contact.id_number"
-              }
-            ],
-            attrs: { type: "text", placeholder: "Enter id number" },
-            domProps: { value: _vm.contact.id_number },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.contact, "id_number", $event.target.value)
-              }
+        _c(
+          "label",
+          {
+            staticClass: "grey-text",
+            attrs: { for: "defaultFormLoginEmailEx" }
+          },
+          [_vm._v("Enter ID number")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.contact.id_number,
+              expression: "contact.id_number"
             }
-          })
-        ])
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "33067836" },
+          domProps: { value: _vm.contact.id_number },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.contact, "id_number", $event.target.value)
+            }
+          }
+        })
       ])
     ]),
     _vm._v(" "),
-    _c("button", { on: { click: _vm.createContact } }, [_vm._v("Add contact")])
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", on: { click: _vm.createContact } },
+      [_vm._v("Add contact")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -38000,10 +38036,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v("Enter Group information")]),
-    _vm._v(" "),
     _c("form", [
-      _c("div", [
+      _c("h3", [_vm._v("Enter Group information")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { staticClass: "grey-text" }, [_vm._v("Enter group name")]),
+        _vm._v(" "),
         _c("input", {
           directives: [
             {
@@ -38013,6 +38051,7 @@ var render = function() {
               expression: "group.group_name"
             }
           ],
+          staticClass: "form-control",
           attrs: { placeholder: "Enter group name" },
           domProps: { value: _vm.group.group_name },
           on: {
@@ -38023,10 +38062,12 @@ var render = function() {
               _vm.$set(_vm.group, "group_name", $event.target.value)
             }
           }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "grey-text" }, [
+          _vm._v("Enter group description")
+        ]),
+        _vm._v(" "),
         _c("textarea", {
           directives: [
             {
@@ -38036,6 +38077,7 @@ var render = function() {
               expression: "group.description"
             }
           ],
+          staticClass: "form-control",
           attrs: { placeholder: "enter description" },
           domProps: { value: _vm.group.description },
           on: {
@@ -38050,7 +38092,11 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("button", { on: { click: _vm.createGroup } }, [_vm._v("Add group")])
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", on: { click: _vm.createGroup } },
+      [_vm._v("Add group")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -38080,7 +38126,7 @@ var render = function() {
     _vm._v(" "),
     _c("form", [
       _c("div", [
-        _c("label", [_vm._v("Select Group:")]),
+        _c("label", { staticClass: "grey-text" }, [_vm._v("Select Group")]),
         _vm._v(" "),
         _c(
           "select",
@@ -38126,7 +38172,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", [
-        _c("label", [_vm._v("Enter Message description:")]),
+        _c("label", { staticClass: "grey-text" }, [_vm._v("Enter message")]),
         _vm._v(" "),
         _c("textarea", {
           directives: [
@@ -38137,6 +38183,7 @@ var render = function() {
               expression: "message"
             }
           ],
+          staticClass: "form-control",
           attrs: { name: "", id: "", cols: "30", rows: "10" },
           domProps: { value: _vm.message },
           on: {

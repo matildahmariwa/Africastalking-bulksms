@@ -14,6 +14,9 @@ class VerifyCsrfToken extends Middleware
      */
     protected $addHttpCookie = true;
     protected $except = [
+        
+        'africastalking/api/callbacks*'
+        
         //
     ];
     public function __construct(Application $app, Encrypter $encrypter)

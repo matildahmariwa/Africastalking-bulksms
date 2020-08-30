@@ -16,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+
+Route::group(['prefix'=>'africastalking/api/callbacks'],function(){
+
+    Route::any('/reports','BulkSMSController@CallbackAT');
+});
+
 
 Auth::routes();
 
@@ -35,3 +45,6 @@ Route::post('/api/addsub', 'contact_groupController@store')->name('addsub');
 //     return 'hello world';
 // });
 // Route::get('/getusers', 'GroupsController@getusers')->name('getusers');
+
+
+
