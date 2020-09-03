@@ -727,7 +727,7 @@ header {
                         <li><a href="{{route('contact')}}"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Contacts</span></a></li>
                         <li><a href="{{route('group')}}"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Groups</span></a></li>
                         <li><<a href="{{route('send')}}"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Message</span></a></li>
-                       
+                        <li><<a href="{{route('add')}}"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add member</span></a></li>
                     </ul>
                 </div>
             </div>

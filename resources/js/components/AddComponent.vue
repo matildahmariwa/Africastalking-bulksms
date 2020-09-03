@@ -1,23 +1,24 @@
 <template>
     <div>
-        <h1>Add contact to group</h1>
-        <form class='form-control' >
-       <div>
+       
+        <form >
+           <h1>Add contact to group</h1>
+     <div class="form-group">
           <label>Select Contact:</label>
                             <select class='form-control' v-model='sub.contact' @change='getContacts()'>
                               <option value='0'>Select Contact</option>
                              <option v-bind:value="data.id" v-for='data in contacts' :key="data.id">{{ data.first_name }}</option>
                             </select>
-       </div>
-       <div>
+       
+       
            <label>Select Group:</label>
            <select class='form-control' v-model='sub.group' @change='getGroups()'>
                               <option value='0'>Select Group</option>
                              <option v-bind:value="data.id" v-for='data in groups' :key="data.id">{{ data.group_name }}</option>
                             </select>
-       </div>
+     </div>
         </form>
-         <button v-on:click="createSub">Join group</button>
+         <button class="btn btn-primary" v-on:click="createSub">Join group</button>
     </div>
 </template>
 <script>  

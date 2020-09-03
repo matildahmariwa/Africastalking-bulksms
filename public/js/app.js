@@ -1930,6 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37727,10 +37728,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Add contact to group")]),
-    _vm._v(" "),
-    _c("form", { staticClass: "form-control" }, [
-      _c("div", [
+    _c("form", [
+      _c("h1", [_vm._v("Add contact to group")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Select Contact:")]),
         _vm._v(" "),
         _c(
@@ -37780,10 +37781,8 @@ var render = function() {
             })
           ],
           2
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", [
+        ),
+        _vm._v(" "),
         _c("label", [_vm._v("Select Group:")]),
         _vm._v(" "),
         _c(
@@ -37837,7 +37836,11 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("button", { on: { click: _vm.createSub } }, [_vm._v("Join group")])
+    _c(
+      "button",
+      { staticClass: "btn btn-primary", on: { click: _vm.createSub } },
+      [_vm._v("Join group")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -52088,8 +52091,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\africastalking\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\africastalking\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Africastalking\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Africastalking\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
